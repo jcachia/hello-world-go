@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"myapp/doctor"
+)
 
 func main() {
 	// Prints, then inserts line break
@@ -19,12 +22,18 @@ func main() {
 	// sayHelloWorld((whatToSay))
 
 	// variable shorthand, assignment operator.
-	whatToSay := "create and store a var in one line, and determine its type automatically"
-	sayHelloWorld((whatToSay))
+	// whatToSay := "create and store a var in one line, and determine its type automatically"
+	// sayHelloWorld((whatToSay))
 
+	// set a variable to the result of another method
+	var whatToSay string
+
+	whatToSay = doctor.Intro()
+
+	fmt.Println(whatToSay)
 }
 
 // Passing arguments to function.  Must list arg name and type.
-func sayHelloWorld(whatToSay string) {
-	fmt.Println(whatToSay)
-}
+// func sayHelloWorld(whatToSay string) {
+// fmt.Println(whatToSay)
+// }
