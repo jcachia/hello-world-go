@@ -42,12 +42,14 @@ func main() {
 		fmt.Print("-> ")
 		// backslash n indicates the newline - enter key press
 		userInput, _ := reader.ReadString('\n')
+		// Strip off the newline so the for loop can break properly
 		// for Windows os
 		userInput = strings.Replace(userInput, "\r\n", "", -1)
 		// for other, logical os
 		userInput = strings.Replace(userInput, "\n", "", -1)
 
 		if userInput == "quit" {
+			// break out of the for loop
 			break
 		} else {
 			// response := doctor.Response(userInput)
