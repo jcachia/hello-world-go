@@ -1,8 +1,11 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"myapp/doctor"
+	"os"
+	"strings"
 )
 
 func main() {
@@ -26,11 +29,33 @@ func main() {
 	// sayHelloWorld((whatToSay))
 
 	// set a variable to the result of another method
-	var whatToSay string
+	// var whatToSay string
+	// whatToSay = doctor.Intro()
+	// fmt.Println(whatToSay)
 
-	whatToSay = doctor.Intro()
-
+	// Use bufio (a standard go package) to read from the user input
+	reader := bufio.NewReader(os.Stdin)
+	whatToSay := doctor.Intro()
 	fmt.Println(whatToSay)
+
+	for {
+		fmt.Print("-> ")
+		// backslash n indicates the newline - enter key press
+		userInput, _ := reader.ReadString('\n')
+		// for Windows os
+		userInput = strings.Replace(userInput, "\r\n", "", -1)
+		// for other, logical os
+		userInput = strings.Replace(userInput, "\n", "", -1)
+
+		if userInput == "quit" {
+			break
+		} else {
+			// response := doctor.Response(userInput)
+			// fmt.Println(response)
+			// Above is the same as:
+			fmt.Println(doctor.Response(userInput))
+		}
+	}
 }
 
 // Passing arguments to function.  Must list arg name and type.
